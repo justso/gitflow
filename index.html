@@ -7,7 +7,7 @@
 <body>
     <h1><script>document.write(document.getElementsByTagName('title')[0].text);</script></h1>
 
-    <button>Colorize!</button>
+    <button id="Colorize">Colorize!</button>
 
     <hr>
 
@@ -17,5 +17,9 @@
         <li>provide background color change randomizer button</li>
         <li>allow user to reset background color to "normal"</li>
     </ul>
+    <script src="colorize.js"></script>
+    <script>
+        Colorize.init();
+    </script>
 </body>
 </html>

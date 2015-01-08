@@ -63,9 +63,9 @@ var Colorize = (function (W, D, C) { // IIFE
     /// INVOKE
 
     function _init(id) {
-        // if (this.inited) {
-        //     return;
-        // }
+        if (this.inited) {
+            return;
+        }
         Df.inits(id);
 
         bindAll();

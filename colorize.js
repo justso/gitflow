@@ -40,12 +40,12 @@ var Colorize = (function (W, D, C) { // IIFE
 
     function _setColor(clr) {
         var neo = clr || _getColor();
-        // var old = Df.old;
-        //
-        // while (!clr && neo === old) {
-        //     C.warn(self.name + '_setColor', 'collision');
-        //     neo = _setColor();
-        // }
+        var old = Df.old;
+
+        while (!clr && neo === old) {
+            C.warn(self.name + '_setColor', 'collision');
+            neo = _setColor();
+        }
         Df.style.backgroundColor = Df.old = neo;
         return neo;
     }

@@ -1,21 +1,17 @@
 /*jslint white:false */
 /*globals window, document, console */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-var Colorize = (function (W, D, C) { // IIFE
+var Reset = (function (W, D, C) { // IIFE
     'use strict';
     var self = {
-        name: 'Colorize',
-        construct: '(silly lil colorizing helper)',
+        name: 'Reset',
+        construct: '(simply uncolor the background)',
     },
         Df = { // DEFAULTS
         __: self,
         btn: null,
-        colors: 'red blue pink yellow green',
-        old: null,
         style: null,
         inits: function (id) {
-            self.colors = this.colors.split(' ');
-
             this.btn = D.getElementById(id || self.name);
             this.style = D.body.style;
             this.inited = true;
@@ -25,29 +21,11 @@ var Colorize = (function (W, D, C) { // IIFE
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// Utility
 
-    function randomizer() {
-        var num = Math.random() * self.colors.length;
-
-        return Math.floor(num);
-    }
-
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     /// INTERNAL
 
-    function _getColor() {
-        return self.colors[randomizer()];
-    }
-
-    function _setColor(clr) {
-        var neo = clr || _getColor();
-        var old = Df.old;
-
-        while (!clr && neo === old) {
-            C.warn(self.name + '_setColor', 'collision');
-            neo = _setColor();
-        }
-        Df.style.backgroundColor = Df.old = neo;
-        return neo;
+    function _reset() {
+        Df.style.backgroundColor = '';
     }
 
     /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -73,8 +51,7 @@ var Colorize = (function (W, D, C) { // IIFE
     }
 
     self.init = _init;
-    self.get = _getColor;
-    self.set = _setColor;
+    self.set = _reset;
 
     return self;
 }(window, document, console));

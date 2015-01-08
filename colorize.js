@@ -10,18 +10,17 @@ var Colorize = (function (W, D, C) { // IIFE
         Df = { // DEFAULTS
         __: self,
         btn: null,
-        bkg: null,
-        old: null,
         colors: 'red blue pink yellow green',
+        old: null,
+        style: null,
         inits: function (id) {
             if (this.inited) {
                 return;
             }
-
             self.colors = this.colors.split(' ');
 
-            this.btn = W.document.getElementById(id || self.name);
-            this.bst = W.document.body.style;
+            this.btn = D.getElementById(id || self.name);
+            this.style = D.body.style;
             this.inited = true;
         },
     };
@@ -46,11 +45,11 @@ var Colorize = (function (W, D, C) { // IIFE
         var neo = clr || _getColor();
         var old = Df.old;
 
-        while (neo === old) {
-            C.log('oops');
+        while (!clr && neo === old) {
+            C.warn(self.name + '_setColor', 'collision');
             neo = _setColor();
         }
-        Df.bst.backgroundColor = Df.old = neo;
+        Df.style.backgroundColor = Df.old = neo;
         return neo;
     }
 
@@ -69,6 +68,7 @@ var Colorize = (function (W, D, C) { // IIFE
     function _init(id) {
         Df.inits(id);
 
+        bindAll();
         return Df;
     }
 

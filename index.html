@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>Web App</title>
 </head>
-<body>
+<body style="background-color: antiquewhite;">
     <h1><script>document.write(document.getElementsByTagName('title')[0].text);</script></h1>
 
-    <button>Reset</button>
+    <button id="Reset">Reset</button>
 
     <hr>
 
@@ -17,5 +17,13 @@
         <li>provide background color change randomizer button</li>
         <li>allow user to reset background color to "normal"</li>
     </ul>
+
+    <script>
+        var reset = document.getElementById('Reset');
+
+        reset.onclick = function () {
+            document.body.style.backgroundColor = '';
+        };
+    </script>
 </body>
 </html>

@@ -14,9 +14,6 @@ var Colorize = (function (W, D, C) { // IIFE
         old: null,
         style: null,
         inits: function (id) {
-            if (this.inited) {
-                return;
-            }
             self.colors = this.colors.split(' ');
 
             this.btn = D.getElementById(id || self.name);
@@ -66,6 +63,9 @@ var Colorize = (function (W, D, C) { // IIFE
     /// INVOKE
 
     function _init(id) {
+        // if (this.inited) {
+        //     return;
+        // }
         Df.inits(id);
 
         bindAll();
